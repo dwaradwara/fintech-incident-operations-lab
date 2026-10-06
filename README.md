@@ -37,10 +37,11 @@ The lab was built to demonstrate the workflow expected from a Support Operations
 - Redis queue and DLQ troubleshooting
 - Prometheus and Grafana monitoring
 - Datadog Agent, OpenMetrics, dashboards, and metric monitors
-- Elasticsearch and Filebeat centralized logging
+- Elasticsearch, Filebeat, and Kibana centralized logging
 - Jira-style incident / engineering escalation records
-- Stakeholder updates and postmortems
+- Stakeholder updates, runbooks, postmortems, and root-cause analysis
 - Python and Bash operational tooling
+- GitHub Actions CI for syntax, tests, Compose, and Prometheus validation
 - AI-assisted incident classification and summarization
 - Deterministic severity policies
 - Secret / PII redaction
@@ -532,6 +533,14 @@ Latest captured result:
 5 passed
 ```
 
+GitHub Actions continuously validates:
+
+- Python syntax across the payment and support services
+- the deterministic incident-triage test suite
+- Docker Compose configuration
+- Prometheus configuration and alert rules
+
+
 Normal automated tests use the deterministic engine so CI does not depend on:
 
 - external API availability
@@ -576,6 +585,9 @@ A green `/health` endpoint is never treated as proof that the full financial wor
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── database/
 ├── docs/
 │   ├── architecture-and-operations.md
@@ -617,6 +629,8 @@ Incident evidence:
 - [`INC003 Evidence`](evidence/INC003)
 - [`INC004 Evidence`](evidence/INC004)
 - [`INC005 Evidence`](evidence/INC005)
+- [`INC005 Runbook`](evidence/INC005/30-runbook.md)
+- [`INC005 Root Cause Analysis`](evidence/INC005/31-root-cause.md)
 
 ---
 
@@ -640,6 +654,7 @@ OpenMetrics
 Prometheus
 Grafana
 Elasticsearch
+Kibana
 Filebeat
 ```
 
@@ -651,8 +666,11 @@ Bash
 pytest
 structured logging
 alerting
+runbooks
 postmortems
+root-cause analysis
 Jira-style escalation records
+GitHub Actions
 ```
 
 ### AI
