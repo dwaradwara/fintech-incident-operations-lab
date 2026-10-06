@@ -1,0 +1,4 @@
+payment_id=d4999f69-8660-481c-b7f7-e89b71c1e405
+original_authorization=80937d56-4a8a-4a09-9558-46449d0e47b1
+duplicate_authorization=94d29ba4-3611-4e68-b5e0-9e72997e9911
+decision=preserve original authorization; reverse only authorization created by unsafe retry

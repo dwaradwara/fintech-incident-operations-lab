@@ -1,0 +1,43 @@
+[
+  {
+    "metric": "fintech.payments.duplicate_authorizations",
+    "points": [
+      [
+        1791285667,
+        1
+      ]
+    ],
+    "tags": [
+      "component:payments",
+      "endpoint:http://provider-simulator:9000/metrics",
+      "service:payment-provider"
+    ],
+    "host": "tabby-ops-01",
+    "type": "gauge",
+    "interval": 0,
+    "source_type_name": "System"
+  },
+  {
+    "metric": "fintech.provider.authorizations.count",
+--
+  },
+  {
+    "metric": "fintech.payments.duplicate_authorizations",
+    "points": [
+      [
+        1791285668,
+        1
+      ]
+    ],
+    "tags": [
+      "component:payments",
+      "endpoint:http://provider-simulator:9000/metrics",
+      "service:payment-provider"
+    ],
+    "host": "tabby-ops-01",
+    "type": "gauge",
+    "interval": 0,
+    "source_type_name": "System"
+  }
+]
+=== Service Checks ===

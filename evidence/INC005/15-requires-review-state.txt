@@ -1,0 +1,4 @@
+              payment_id              |   idempotency_key    | amount | currency |     status      | provider_reference |      failure_code       |                 failure_message
+--------------------------------------+----------------------+--------+----------+-----------------+--------------------+-------------------------+--------------------------------------------------
+ d4999f69-8660-481c-b7f7-e89b71c1e405 | checkout-order-70001 | 400.00 | AED      | REQUIRES_REVIEW |                    | DUPLICATE_AUTHORIZATION | Multiple active provider authorizations detected
+(1 row)

@@ -1,0 +1,2 @@
+{"detail":{"error":"DUPLICATE_AUTHORIZATION","message":"Multiple active provider authorizations detected. Human review required.","payment_id":"d4999f69-8660-481c-b7f7-e89b71c1e405","active_authorizations":2}}
+HTTP_STATUS=409

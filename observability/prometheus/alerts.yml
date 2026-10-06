@@ -67,6 +67,30 @@ groups:
           summary: "Webhook queue backlog detected"
           description: "More than five webhook jobs remain queued."
 
+      - alert: AmbiguousPaymentOutcomeDetected
+        expr: |
+          increase(fintech_payment_ambiguous_outcomes_total[2m]) >= 1
+        for: 5s
+        labels:
+          severity: critical
+          service: payment-api
+          team: support-operations
+        annotations:
+          summary: "Payment authorization outcome is unknown"
+          description: "A provider timeout occurred after an authorization request. Provider state must be verified before retry."
+
+      - alert: DuplicatePaymentAuthorizationDetected
+        expr: |
+          fintech_provider_duplicate_authorizations > 0
+        for: 5s
+        labels:
+          severity: critical
+          service: payment-provider
+          team: support-operations
+        annotations:
+          summary: "Duplicate payment authorization detected"
+          description: "More than one active provider authorization exists for the same payment intent."
+
   - name: fintech-webhook-operations
 
     rules:

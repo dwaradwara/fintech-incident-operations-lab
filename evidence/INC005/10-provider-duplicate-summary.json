@@ -1,0 +1,19 @@
+{
+  "duplicate_payment_count": 1,
+  "duplicate_authorizations": 1,
+  "payments": [
+    {
+      "payment_id": "d4999f69-8660-481c-b7f7-e89b71c1e405",
+      "authorization_count": 2,
+      "provider_references": [
+        "80937d56-4a8a-4a09-9558-46449d0e47b1",
+        "94d29ba4-3611-4e68-b5e0-9e72997e9911"
+      ],
+      "amounts": [
+        400,
+        400
+      ],
+      "currency": "AED"
+    }
+  ]
+}
