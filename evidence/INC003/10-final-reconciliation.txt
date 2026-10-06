@@ -1,0 +1,9 @@
+   idempotency_key    | payment_status | payment_amount | ledger_amount | payment_currency | ledger_currency | reconciliation_status
+----------------------+----------------+----------------+---------------+------------------+-----------------+-----------------------
+ checkout-order-50000 | AUTHORIZED     |         525.75 |        525.75 | AED              | AED             | RECONCILED
+ checkout-order-50001 | AUTHORIZED     |         275.50 |        275.50 | AED              | AED             | RECONCILED
+ checkout-order-50002 | AUTHORIZED     |         275.50 |        275.50 | AED              | AED             | RECONCILED
+ checkout-order-50003 | AUTHORIZED     |         275.50 |        275.50 | AED              | AED             | RECONCILED
+ checkout-order-50004 | AUTHORIZED     |         275.50 |        275.50 | AED              | AED             | RECONCILED
+ checkout-order-50005 | AUTHORIZED     |         275.50 |        275.50 | AED              | AED             | RECONCILED
+(6 rows)

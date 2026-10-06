@@ -1,0 +1,41 @@
+{
+  "status": "success",
+  "data": {
+    "alerts": [
+      {
+        "labels": {
+          "alertname": "MerchantWebhookDeliveryFailures",
+          "instance": "webhook-worker:9101",
+          "job": "fintech-webhook-worker",
+          "service": "webhook-worker",
+          "severity": "critical",
+          "team": "support-operations"
+        },
+        "annotations": {
+          "description": "Multiple merchant webhook attempts are failing.",
+          "summary": "Merchant webhook delivery failures detected"
+        },
+        "state": "firing",
+        "activeAt": "2026-10-06T06:11:12.063704599Z",
+        "value": "1.5298434782608696e+01"
+      },
+      {
+        "labels": {
+          "alertname": "MerchantWebhookPermanentFailures",
+          "instance": "webhook-worker:9101",
+          "job": "fintech-webhook-worker",
+          "service": "webhook-worker",
+          "severity": "critical",
+          "team": "support-operations"
+        },
+        "annotations": {
+          "description": "One or more webhook deliveries exhausted all retry attempts.",
+          "summary": "Merchant webhook delivery exhausted retries"
+        },
+        "state": "firing",
+        "activeAt": "2026-10-06T06:12:22.063704599Z",
+        "value": "3.0596869565217393e+00"
+      }
+    ]
+  }
+}

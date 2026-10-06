@@ -1,0 +1,47 @@
+filebeat.inputs:
+  - type: filestream
+    id: fintech-docker-logs
+    enabled: true
+
+    paths:
+      - /var/lib/docker/containers/*/*.log
+
+    parsers:
+      - container:
+          stream: all
+          format: docker
+
+processors:
+
+  - add_docker_metadata:
+      host: unix:///var/run/docker.sock
+
+  - decode_json_fields:
+      fields:
+        - message
+      target: fintech
+      overwrite_keys: false
+      add_error_key: true
+      when:
+        and:
+          - regexp:
+              message: '^\{'
+          - or:
+              - equals:
+                  container.name: fintech-payment-api
+              - equals:
+                  container.name: fintech-webhook-worker
+              - equals:
+                  container.name: fintech-ledger-worker
+
+output.elasticsearch:
+  hosts:
+    - http://elasticsearch:9200
+
+  index: fintech-logs-%{+yyyy.MM.dd}
+
+setup.ilm.enabled: false
+setup.template.name: fintech-logs
+setup.template.pattern: fintech-logs-*
+
+logging.level: info

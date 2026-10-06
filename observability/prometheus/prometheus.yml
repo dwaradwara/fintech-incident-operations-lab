@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+rule_files:
+  - /etc/prometheus/alerts.yml
+
+scrape_configs:
+  - job_name: fintech-payment-api
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - payment-api:8080
+
+  - job_name: fintech-webhook-worker
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - webhook-worker:9101
+
+  - job_name: fintech-ledger-worker
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - ledger-worker:9102

@@ -1,0 +1,5 @@
+     status     | payment_count | percentage
+----------------+---------------+------------
+ PROVIDER_ERROR |            37 |      71.15
+ AUTHORIZED     |            15 |      28.85
+(2 rows)

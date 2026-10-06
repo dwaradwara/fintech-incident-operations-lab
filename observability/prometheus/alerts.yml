@@ -1,0 +1,136 @@
+groups:
+  - name: fintech-payment-operations
+
+    rules:
+
+      - alert: HighPaymentAuthorizationFailureRate
+        expr: |
+          (
+            increase(fintech_payment_authorization_failures_total[2m])
+            /
+            clamp_min(
+              increase(fintech_payments_created_total[2m]),
+              1
+            )
+          ) > 0.20
+          and
+          increase(fintech_payments_created_total[2m]) >= 5
+        for: 15s
+        labels:
+          severity: critical
+          service: payment-api
+          team: support-operations
+        annotations:
+          summary: "Payment authorization failure rate is elevated"
+          description: "More than 20% of recently created payments are failing authorization."
+
+      - alert: ProviderHttpErrorsDetected
+        expr: |
+          increase(fintech_provider_http_errors_total[1m]) >= 3
+        for: 10s
+        labels:
+          severity: critical
+          service: payment-provider
+          team: support-operations
+        annotations:
+          summary: "Payment provider HTTP errors detected"
+          description: "Multiple upstream provider HTTP failures were observed."
+
+      - alert: ProviderLatencyHigh
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum by (le) (
+              rate(
+                fintech_provider_request_duration_seconds_bucket[2m]
+              )
+            )
+          ) > 2
+        for: 20s
+        labels:
+          severity: warning
+          service: payment-provider
+          team: support-operations
+        annotations:
+          summary: "Payment provider latency is high"
+          description: "Provider p95 latency has exceeded two seconds."
+
+      - alert: WebhookQueueBacklog
+        expr: |
+          fintech_webhook_queue_depth > 5
+        for: 20s
+        labels:
+          severity: warning
+          service: webhook-worker
+          team: support-operations
+        annotations:
+          summary: "Webhook queue backlog detected"
+          description: "More than five webhook jobs remain queued."
+
+  - name: fintech-webhook-operations
+
+    rules:
+
+      - alert: MerchantWebhookDeliveryFailures
+        expr: |
+          increase(fintech_webhook_delivery_failures_total[2m]) >= 3
+        for: 10s
+        labels:
+          severity: critical
+          service: webhook-worker
+          team: support-operations
+        annotations:
+          summary: "Merchant webhook delivery failures detected"
+          description: "Multiple merchant webhook attempts are failing."
+
+      - alert: MerchantWebhookPermanentFailures
+        expr: |
+          increase(fintech_webhook_permanent_failures_total[2m]) >= 1
+        for: 5s
+        labels:
+          severity: critical
+          service: webhook-worker
+          team: support-operations
+        annotations:
+          summary: "Merchant webhook delivery exhausted retries"
+          description: "One or more webhook deliveries exhausted all retry attempts."
+
+  - name: fintech-ledger-operations
+
+    rules:
+
+      - alert: ReconciliationMismatchDetected
+        expr: |
+          fintech_reconciliation_missing_ledger_entries >= 3
+        for: 10s
+        labels:
+          severity: critical
+          service: ledger-worker
+          team: support-operations
+        annotations:
+          summary: "Payment and ledger records are out of reconciliation"
+          description: "Three or more authorized payments are missing corresponding ledger entries."
+
+      - alert: LedgerQueueBacklog
+        expr: |
+          fintech_ledger_queue_depth >= 3
+        for: 10s
+        labels:
+          severity: warning
+          service: ledger-worker
+          team: support-operations
+        annotations:
+          summary: "Ledger processing queue is backing up"
+          description: "Ledger queue depth has exceeded the normal operating threshold."
+
+      - alert: LedgerProcessingFailures
+        expr: |
+          increase(fintech_ledger_processing_failures_total[2m]) >= 3
+        for: 10s
+        labels:
+          severity: critical
+          service: ledger-worker
+          team: support-operations
+        annotations:
+          summary: "Repeated ledger event processing failures"
+          description: "The ledger consumer is repeatedly failing to process events."

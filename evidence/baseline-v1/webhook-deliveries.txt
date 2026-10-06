@@ -1,0 +1,4 @@
+              payment_id              |     event_type     | delivery_status | attempt_count | last_http_status
+--------------------------------------+--------------------+-----------------+---------------+------------------
+ 8f9fc8ab-4e23-4644-a065-0b6974f3f403 | payment.authorized | DELIVERED       |             1 |              200
+(1 row)

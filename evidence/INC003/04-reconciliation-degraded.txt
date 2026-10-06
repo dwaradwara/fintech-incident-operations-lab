@@ -1,0 +1,9 @@
+   idempotency_key    |              payment_id              | payment_status | payment_amount | ledger_amount | reconciliation_status
+----------------------+--------------------------------------+----------------+----------------+---------------+-----------------------
+ checkout-order-50000 | 8a14c00a-f09c-4bd3-8de6-5e27901283e6 | AUTHORIZED     |         525.75 |        525.75 | RECONCILED
+ checkout-order-50001 | 3e0aab07-3d67-4afc-850f-a821b0527e6b | AUTHORIZED     |         275.50 |               | MISSING_LEDGER_ENTRY
+ checkout-order-50002 | abca721d-2975-4d39-ba15-928614611739 | AUTHORIZED     |         275.50 |               | MISSING_LEDGER_ENTRY
+ checkout-order-50003 | 337927cb-7294-46fc-b723-013f9d4d4aee | AUTHORIZED     |         275.50 |               | MISSING_LEDGER_ENTRY
+ checkout-order-50004 | 38190505-a1b2-492b-b029-e7a991fec813 | AUTHORIZED     |         275.50 |               | MISSING_LEDGER_ENTRY
+ checkout-order-50005 | b46a2103-d9eb-48f0-b238-e7cb49817486 | AUTHORIZED     |         275.50 |               | MISSING_LEDGER_ENTRY
+(6 rows)

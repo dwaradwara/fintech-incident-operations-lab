@@ -1,0 +1,1009 @@
+{
+  "took": 4,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 15,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": [
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "YiP3D6EBmRzoW9YWomJ8",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:27.828Z",
+          "log": {
+            "offset": 39302,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          },
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:47:27.828747+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"6a2c2a5e-8df1-4990-8cf8-3e84b03d2cc9\", \"provider_reference\": \"2189be28-bf79-46fd-9710-8bafd0152040\", \"provider_latency_ms\": 3510.26}\n",
+          "container": {
+            "labels": {
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_container-number": "1"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api",
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc"
+          },
+          "fintech": {
+            "payment_id": "6a2c2a5e-8df1-4990-8cf8-3e84b03d2cc9",
+            "provider_reference": "2189be28-bf79-46fd-9710-8bafd0152040",
+            "provider_latency_ms": 3510.26,
+            "timestamp": "2026-10-06T06:47:27.828747+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized"
+          }
+        },
+        "sort": [
+          1791269247828
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "ZCP3D6EBmRzoW9YWomJ8",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:27.830Z",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa"
+          },
+          "container": {
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "name": "fintech-payment-api",
+            "labels": {
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_replace": "fintech-payment-api"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            }
+          },
+          "log": {
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            },
+            "offset": 39943
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:47:27.830511+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"0724c17e-f80d-420e-a315-0d2e5d6afef7\", \"provider_reference\": \"22c71b5c-2fe8-499b-9adf-c0cef7d63ca4\", \"provider_latency_ms\": 3507.63}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "stream": "stderr",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "fintech": {
+            "timestamp": "2026-10-06T06:47:27.830511+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "0724c17e-f80d-420e-a315-0d2e5d6afef7",
+            "provider_reference": "22c71b5c-2fe8-499b-9adf-c0cef7d63ca4",
+            "provider_latency_ms": 3507.63
+          }
+        },
+        "sort": [
+          1791269247830
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "ZiP3D6EBmRzoW9YWomJ8",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:27.830Z",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:27.830702+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"56524e61-b439-4cde-a9d0-4a7e85f7b6cc\", \"provider_reference\": \"bef73b65-9d72-4b05-a88a-5d8dd4b6e8ae\", \"provider_latency_ms\": 3505.19}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68"
+          },
+          "fintech": {
+            "timestamp": "2026-10-06T06:47:27.830702+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "56524e61-b439-4cde-a9d0-4a7e85f7b6cc",
+            "provider_reference": "bef73b65-9d72-4b05-a88a-5d8dd4b6e8ae",
+            "provider_latency_ms": 3505.19
+          },
+          "stream": "stderr",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "container": {
+            "labels": {
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_container-number": "1"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "name": "fintech-payment-api"
+          },
+          "log": {
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            },
+            "offset": 40584
+          }
+        },
+        "sort": [
+          1791269247830
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "aCP3D6EBmRzoW9YWomJ8",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:27.831Z",
+          "agent": {
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "container": {
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api",
+            "labels": {
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885"
+            },
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc"
+          },
+          "fintech": {
+            "event": "payment_authorized",
+            "payment_id": "88029fbb-b3f2-4e26-a1a4-bcbd4b75f782",
+            "provider_reference": "ac475ad6-fa3c-44f4-87f6-c58d02b4ddc9",
+            "provider_latency_ms": 3508.49,
+            "timestamp": "2026-10-06T06:47:27.831363+00:00",
+            "service": "payment-api"
+          },
+          "input": {
+            "type": "filestream"
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:27.831363+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"88029fbb-b3f2-4e26-a1a4-bcbd4b75f782\", \"provider_reference\": \"ac475ad6-fa3c-44f4-87f6-c58d02b4ddc9\", \"provider_latency_ms\": 3508.49}\n",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "log": {
+            "offset": 41225,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          }
+        },
+        "sort": [
+          1791269247831
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "aiP3D6EBmRzoW9YWomJ8",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:27.832Z",
+          "agent": {
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "name": "fintech-payment-api",
+            "labels": {
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            }
+          },
+          "fintech": {
+            "timestamp": "2026-10-06T06:47:27.832104+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "9e128c6e-7ade-4ff8-9028-fceaffa1e50a",
+            "provider_reference": "69ab87f5-6904-4070-9ccb-28fa12886daa",
+            "provider_latency_ms": 3507.03
+          },
+          "log": {
+            "offset": 41866,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:27.832104+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"9e128c6e-7ade-4ff8-9028-fceaffa1e50a\", \"provider_reference\": \"69ab87f5-6904-4070-9ccb-28fa12886daa\", \"provider_latency_ms\": 3507.03}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "host": {
+            "name": "df9920327f68"
+          }
+        },
+        "sort": [
+          1791269247832
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "dyP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:31.419Z",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:31.416748+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"11b37909-4302-40df-b7b6-1a857e659e03\", \"provider_reference\": \"507145e9-c1b8-4c04-bc7c-c68549c17941\", \"provider_latency_ms\": 3503.86}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat"
+          },
+          "stream": "stderr",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api",
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "labels": {
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_project": "fintech-ops-runtime"
+            }
+          },
+          "fintech": {
+            "provider_latency_ms": 3503.86,
+            "timestamp": "2026-10-06T06:47:31.416748+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "11b37909-4302-40df-b7b6-1a857e659e03",
+            "provider_reference": "507145e9-c1b8-4c04-bc7c-c68549c17941"
+          },
+          "log": {
+            "offset": 44957,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          }
+        },
+        "sort": [
+          1791269251419
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "eSP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:31.419Z",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "fintech": {
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "0c614fe8-3933-4c07-8489-d7c9de5850a5",
+            "provider_reference": "aeda8ad5-ce3d-46ca-a1f8-df5cfc47a4cb",
+            "provider_latency_ms": 3508.02,
+            "timestamp": "2026-10-06T06:47:31.417024+00:00"
+          },
+          "stream": "stderr",
+          "log": {
+            "offset": 45598,
+            "file": {
+              "device_id": "64513",
+              "inode": "1313519",
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log"
+            }
+          },
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "labels": {
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885"
+            },
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:47:31.417024+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"0c614fe8-3933-4c07-8489-d7c9de5850a5\", \"provider_reference\": \"aeda8ad5-ce3d-46ca-a1f8-df5cfc47a4cb\", \"provider_latency_ms\": 3508.02}\n"
+        },
+        "sort": [
+          1791269251419
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "eyP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:31.426Z",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:31.426643+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"8c6d10b5-70d8-4c89-b773-ea020788f27d\", \"provider_reference\": \"2e6b0c44-1c4c-4907-9bca-b7360e40f66a\", \"provider_latency_ms\": 3502.7}\n",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api",
+            "labels": {
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false"
+            }
+          },
+          "fintech": {
+            "timestamp": "2026-10-06T06:47:31.426643+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "8c6d10b5-70d8-4c89-b773-ea020788f27d",
+            "provider_reference": "2e6b0c44-1c4c-4907-9bca-b7360e40f66a",
+            "provider_latency_ms": 3502.7
+          },
+          "log": {
+            "offset": 46238,
+            "file": {
+              "inode": "1313519",
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513"
+            }
+          }
+        },
+        "sort": [
+          1791269251426
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "fyP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:31.440Z",
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "container": {
+            "labels": {
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api",
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc"
+          },
+          "log": {
+            "file": {
+              "inode": "1313519",
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513"
+            },
+            "offset": 47146
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:47:31.440338+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"34a4ea06-0039-4170-bb57-844153135857\", \"provider_reference\": \"11ba1b05-5b0c-4d56-8618-d80d2cfab3c2\", \"provider_latency_ms\": 3504.42}\n",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "fintech": {
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "34a4ea06-0039-4170-bb57-844153135857",
+            "provider_reference": "11ba1b05-5b0c-4d56-8618-d80d2cfab3c2",
+            "provider_latency_ms": 3504.42,
+            "timestamp": "2026-10-06T06:47:31.440338+00:00"
+          }
+        },
+        "sort": [
+          1791269251440
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "giP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:31.450Z",
+          "fintech": {
+            "provider_reference": "f24766a2-358b-4d84-afb9-6c3fa7bee41d",
+            "provider_latency_ms": 3506.37,
+            "timestamp": "2026-10-06T06:47:31.450445+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "9c99eb83-6cdc-406f-82c9-f08f6b71f9ca"
+          },
+          "log": {
+            "file": {
+              "inode": "1313519",
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513"
+            },
+            "offset": 47921
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:47:31.450445+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"9c99eb83-6cdc-406f-82c9-f08f6b71f9ca\", \"provider_reference\": \"f24766a2-358b-4d84-afb9-6c3fa7bee41d\", \"provider_latency_ms\": 3506.37}\n",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "container": {
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "labels": {
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api"
+          },
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "agent": {
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa"
+          }
+        },
+        "sort": [
+          1791269251450
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "myP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:34.980Z",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:34.980788+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"5e680970-b5fe-45d4-bfee-9ec5dda6ffba\", \"provider_reference\": \"74a18512-bad7-4bc6-8d83-0252ebc0493e\", \"provider_latency_ms\": 3502.65}\n",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat"
+          },
+          "container": {
+            "labels": {
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_container-number": "1"
+            },
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api"
+          },
+          "log": {
+            "offset": 50612,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          },
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "fintech": {
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "5e680970-b5fe-45d4-bfee-9ec5dda6ffba",
+            "provider_reference": "74a18512-bad7-4bc6-8d83-0252ebc0493e",
+            "provider_latency_ms": 3502.65,
+            "timestamp": "2026-10-06T06:47:34.980788+00:00"
+          }
+        },
+        "sort": [
+          1791269254980
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "niP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:34.997Z",
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:34.997044+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"b67fab1b-9f2e-4a5e-a7b5-5c353b2f144d\", \"provider_reference\": \"7789fe24-b277-4dbd-828e-8977a031c567\", \"provider_latency_ms\": 3502.35}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "agent": {
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "log": {
+            "offset": 51387,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "container": {
+            "name": "fintech-payment-api",
+            "labels": {
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_oneoff": "False"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc"
+          },
+          "fintech": {
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "b67fab1b-9f2e-4a5e-a7b5-5c353b2f144d",
+            "provider_reference": "7789fe24-b277-4dbd-828e-8977a031c567",
+            "provider_latency_ms": 3502.35,
+            "timestamp": "2026-10-06T06:47:34.997044+00:00"
+          }
+        },
+        "sort": [
+          1791269254997
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "oCP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:35.006Z",
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "log": {
+            "offset": 52028,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:47:35.006352+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"1383a202-4f6d-4d10-abdc-798222818274\", \"provider_reference\": \"76ae90a1-3721-4d2e-85d7-2582a70e302e\", \"provider_latency_ms\": 3502.61}\n",
+          "container": {
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "name": "fintech-payment-api",
+            "labels": {
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb"
+            },
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc"
+          },
+          "fintech": {
+            "timestamp": "2026-10-06T06:47:35.006352+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized",
+            "payment_id": "1383a202-4f6d-4d10-abdc-798222818274",
+            "provider_reference": "76ae90a1-3721-4d2e-85d7-2582a70e302e",
+            "provider_latency_ms": 3502.61
+          }
+        },
+        "sort": [
+          1791269255006
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "oyP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:35.021Z",
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat"
+          },
+          "fintech": {
+            "payment_id": "7a54917b-78d4-4688-9f14-f611ca9738f7",
+            "provider_reference": "3627a15b-5690-481b-9515-7ff419cbac92",
+            "provider_latency_ms": 3503.18,
+            "timestamp": "2026-10-06T06:47:35.021746+00:00",
+            "service": "payment-api",
+            "event": "payment_authorized"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "container": {
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            },
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "name": "fintech-payment-api",
+            "labels": {
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false"
+            }
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:47:35.021746+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"7a54917b-78d4-4688-9f14-f611ca9738f7\", \"provider_reference\": \"3627a15b-5690-481b-9515-7ff419cbac92\", \"provider_latency_ms\": 3503.18}\n",
+          "log": {
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            },
+            "offset": 52803
+          },
+          "stream": "stderr"
+        },
+        "sort": [
+          1791269255021
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "piP3D6EBmRzoW9YWymI-",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:47:35.027Z",
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:47:35.027778+00:00\", \"service\": \"payment-api\", \"event\": \"payment_authorized\", \"payment_id\": \"f6416778-851d-4e25-aeba-bd415c1f3ffd\", \"provider_reference\": \"68ac1fbd-2d4d-4072-826a-8306c530bda6\", \"provider_latency_ms\": 3503.01}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68"
+          },
+          "container": {
+            "name": "fintech-payment-api",
+            "id": "90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc",
+            "labels": {
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_image": "sha256:679263dbb115e0cc7e27fc7b795ea5dd44c2afff64137cea3a8dcd193fe911cb",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_config-hash": "2227b2960a7e1a926000a848654c5e624f7664a47cda50f388c76e117bc6d885",
+              "com_docker_compose_depends_on": "postgres:service_healthy:false,redis:service_healthy:false,provider-simulator:service_started:false",
+              "com_docker_compose_replace": "fintech-payment-api",
+              "com_docker_compose_service": "payment-api",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-payment-api"
+            }
+          },
+          "log": {
+            "offset": 53578,
+            "file": {
+              "path": "/var/lib/docker/containers/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc/90c89f17fcb8f63cfd20c056af48e15ac7abe349e57386d554cbcdbe0e8409bc-json.log",
+              "device_id": "64513",
+              "inode": "1313519"
+            }
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "fintech": {
+            "event": "payment_authorized",
+            "payment_id": "f6416778-851d-4e25-aeba-bd415c1f3ffd",
+            "provider_reference": "68ac1fbd-2d4d-4072-826a-8306c530bda6",
+            "provider_latency_ms": 3503.01,
+            "timestamp": "2026-10-06T06:47:35.027778+00:00",
+            "service": "payment-api"
+          }
+        },
+        "sort": [
+          1791269255027
+        ]
+      }
+    ]
+  }
+}

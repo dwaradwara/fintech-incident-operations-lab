@@ -1,0 +1,10 @@
+{
+  "name": "MerchantWebhookDeliveryFailures",
+  "state": "inactive",
+  "health": "ok"
+}
+{
+  "name": "MerchantWebhookPermanentFailures",
+  "state": "inactive",
+  "health": "ok"
+}

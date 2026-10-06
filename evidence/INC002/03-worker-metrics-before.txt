@@ -1,0 +1,63 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 336.0
+python_gc_objects_collected_total{generation="1"} 59.0
+python_gc_objects_collected_total{generation="2"} 0.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 84.0
+python_gc_collections_total{generation="1"} 7.0
+python_gc_collections_total{generation="2"} 0.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="15",version="3.12.15"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 2.3588864e+08
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 5.1019776e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79126675884e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 0.67
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 7.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1024.0
+# HELP fintech_webhook_delivered_total Successfully delivered merchant webhooks
+# TYPE fintech_webhook_delivered_total counter
+fintech_webhook_delivered_total 0.0
+# HELP fintech_webhook_delivered_created Successfully delivered merchant webhooks
+# TYPE fintech_webhook_delivered_created gauge
+fintech_webhook_delivered_created 1.7912667601645381e+09
+# HELP fintech_webhook_delivery_failures_total Failed merchant webhook delivery attempts
+# TYPE fintech_webhook_delivery_failures_total counter
+fintech_webhook_delivery_failures_total 0.0
+# HELP fintech_webhook_delivery_failures_created Failed merchant webhook delivery attempts
+# TYPE fintech_webhook_delivery_failures_created gauge
+fintech_webhook_delivery_failures_created 1.7912667601645503e+09
+# HELP fintech_webhook_retries_total Webhook jobs scheduled for retry
+# TYPE fintech_webhook_retries_total counter
+fintech_webhook_retries_total 0.0
+# HELP fintech_webhook_retries_created Webhook jobs scheduled for retry
+# TYPE fintech_webhook_retries_created gauge
+fintech_webhook_retries_created 1.791266760164558e+09
+# HELP fintech_webhook_permanent_failures_total Webhook deliveries that exhausted retry attempts
+# TYPE fintech_webhook_permanent_failures_total counter
+fintech_webhook_permanent_failures_total 0.0
+# HELP fintech_webhook_permanent_failures_created Webhook deliveries that exhausted retry attempts
+# TYPE fintech_webhook_permanent_failures_created gauge
+fintech_webhook_permanent_failures_created 1.7912667601645627e+09
+# HELP fintech_worker_webhook_queue_depth Current webhook queue depth
+# TYPE fintech_worker_webhook_queue_depth gauge
+fintech_worker_webhook_queue_depth 0.0

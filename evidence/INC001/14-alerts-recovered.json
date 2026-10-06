@@ -1,0 +1,10 @@
+{
+  "name": "HighPaymentAuthorizationFailureRate",
+  "state": "inactive",
+  "health": "ok"
+}
+{
+  "name": "ProviderHttpErrorsDetected",
+  "state": "inactive",
+  "health": "ok"
+}

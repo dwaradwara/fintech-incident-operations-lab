@@ -1,0 +1,1039 @@
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 15,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": [
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "yCPWD6EBmRzoW9YWkF54",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:05.616Z",
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_image_builder": "classic"
+            }
+          },
+          "fintech": {
+            "event": "webhook_delivery_failed",
+            "payment_id": "b0b3aba4-f88c-4e2d-83d1-d703e86d73f9",
+            "event_type": "payment.authorized",
+            "attempt": 1,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:05.616435+00:00",
+            "service": "webhook-worker"
+          },
+          "log": {
+            "file": {
+              "inode": "1111079",
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513"
+            },
+            "offset": 0
+          },
+          "agent": {
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:11:05.616435+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"b0b3aba4-f88c-4e2d-83d1-d703e86d73f9\", \"event_type\": \"payment.authorized\", \"attempt\": 1, \"error\": \"HTTP 500\", \"final_failure\": false}\n"
+        },
+        "sort": [
+          1791267065616
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "yiPWD6EBmRzoW9YWkF54",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:07.647Z",
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_image_builder": "classic"
+            }
+          },
+          "log": {
+            "offset": 362,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:11:07.647241+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"dd82ca56-b270-4164-8fdf-2e2b554e0677\", \"event_type\": \"payment.authorized\", \"attempt\": 1, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "fintech": {
+            "attempt": 1,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:07.647241+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "dd82ca56-b270-4164-8fdf-2e2b554e0677",
+            "event_type": "payment.authorized"
+          }
+        },
+        "sort": [
+          1791267067647
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "yyPWD6EBmRzoW9YWkF54",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:09.682Z",
+          "log": {
+            "offset": 724,
+            "file": {
+              "inode": "1111079",
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513"
+            }
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:11:09.681869+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"2181e2c5-c142-45c7-9aad-4cd802c1e49b\", \"event_type\": \"payment.authorized\", \"attempt\": 1, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "container": {
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_service": "webhook-worker"
+            }
+          },
+          "input": {
+            "type": "filestream"
+          },
+          "fintech": {
+            "payment_id": "2181e2c5-c142-45c7-9aad-4cd802c1e49b",
+            "event_type": "payment.authorized",
+            "attempt": 1,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:09.681869+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed"
+          }
+        },
+        "sort": [
+          1791267069682
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "zCPWD6EBmRzoW9YWkF54",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:11.712Z",
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:11:11.711842+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"b0b3aba4-f88c-4e2d-83d1-d703e86d73f9\", \"event_type\": \"payment.authorized\", \"attempt\": 2, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "log": {
+            "offset": 1086,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508"
+            }
+          },
+          "fintech": {
+            "timestamp": "2026-10-06T06:11:11.711842+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "b0b3aba4-f88c-4e2d-83d1-d703e86d73f9",
+            "event_type": "payment.authorized",
+            "attempt": 2,
+            "error": "HTTP 500",
+            "final_failure": false
+          }
+        },
+        "sort": [
+          1791267071712
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "ziPWD6EBmRzoW9YWkF54",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:15.734Z",
+          "stream": "stderr",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "fintech": {
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:15.734637+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "dd82ca56-b270-4164-8fdf-2e2b554e0677",
+            "event_type": "payment.authorized",
+            "attempt": 2
+          },
+          "agent": {
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "labels": {
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "name": "fintech-webhook-worker"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:11:15.734637+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"dd82ca56-b270-4164-8fdf-2e2b554e0677\", \"event_type\": \"payment.authorized\", \"attempt\": 2, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "log": {
+            "offset": 1448,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "input": {
+            "type": "filestream"
+          }
+        },
+        "sort": [
+          1791267075734
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "0yPWD6EBmRzoW9YWkF54",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:19.752Z",
+          "log": {
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            },
+            "offset": 1810
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime"
+            }
+          },
+          "fintech": {
+            "payment_id": "2181e2c5-c142-45c7-9aad-4cd802c1e49b",
+            "event_type": "payment.authorized",
+            "attempt": 2,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:19.752407+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed"
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:11:19.752407+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"2181e2c5-c142-45c7-9aad-4cd802c1e49b\", \"event_type\": \"payment.authorized\", \"attempt\": 2, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          }
+        },
+        "sort": [
+          1791267079752
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "1SPWD6EBmRzoW9YWv15P",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:23.798Z",
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_service": "webhook-worker"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            }
+          },
+          "log": {
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            },
+            "offset": 2172
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "fintech": {
+            "payment_id": "b0b3aba4-f88c-4e2d-83d1-d703e86d73f9",
+            "event_type": "payment.authorized",
+            "attempt": 3,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:23.797926+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:11:23.797926+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"b0b3aba4-f88c-4e2d-83d1-d703e86d73f9\", \"event_type\": \"payment.authorized\", \"attempt\": 3, \"error\": \"HTTP 500\", \"final_failure\": false}\n"
+        },
+        "sort": [
+          1791267083798
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "2yPWD6EBmRzoW9YW5143",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:31.819Z",
+          "log": {
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            },
+            "offset": 2534
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "agent": {
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime"
+            }
+          },
+          "fintech": {
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:31.819040+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "dd82ca56-b270-4164-8fdf-2e2b554e0677",
+            "event_type": "payment.authorized",
+            "attempt": 3,
+            "error": "HTTP 500"
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:11:31.819040+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"dd82ca56-b270-4164-8fdf-2e2b554e0677\", \"event_type\": \"payment.authorized\", \"attempt\": 3, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "host": {
+            "name": "df9920327f68"
+          }
+        },
+        "sort": [
+          1791267091819
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "3CPWD6EBmRzoW9YW5143",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:39.836Z",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker",
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "labels": {
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml"
+            }
+          },
+          "fintech": {
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "2181e2c5-c142-45c7-9aad-4cd802c1e49b",
+            "event_type": "payment.authorized",
+            "attempt": 3,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:39.835491+00:00"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:11:39.835491+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"2181e2c5-c142-45c7-9aad-4cd802c1e49b\", \"event_type\": \"payment.authorized\", \"attempt\": 3, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "log": {
+            "offset": 2896,
+            "file": {
+              "inode": "1111079",
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513"
+            }
+          },
+          "stream": "stderr"
+        },
+        "sort": [
+          1791267099836
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "4yPXD6EBmRzoW9YWFV5j",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:47.854Z",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "labels": {
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker"
+          },
+          "log": {
+            "offset": 3258,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "stream": "stderr",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "fintech": {
+            "event_type": "payment.authorized",
+            "attempt": 4,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:47.853843+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "b0b3aba4-f88c-4e2d-83d1-d703e86d73f9"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:11:47.853843+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"b0b3aba4-f88c-4e2d-83d1-d703e86d73f9\", \"event_type\": \"payment.authorized\", \"attempt\": 4, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "input": {
+            "type": "filestream"
+          }
+        },
+        "sort": [
+          1791267107854
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "5SPXD6EBmRzoW9YWTF4F",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:11:57.881Z",
+          "message": "{\"timestamp\": \"2026-10-06T06:11:57.880935+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"dd82ca56-b270-4164-8fdf-2e2b554e0677\", \"event_type\": \"payment.authorized\", \"attempt\": 4, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "container": {
+            "labels": {
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime"
+            },
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker"
+          },
+          "fintech": {
+            "payment_id": "dd82ca56-b270-4164-8fdf-2e2b554e0677",
+            "event_type": "payment.authorized",
+            "attempt": 4,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:11:57.880935+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed"
+          },
+          "log": {
+            "offset": 3620,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          }
+        },
+        "sort": [
+          1791267117881
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "6yPXD6EBmRzoW9YWe166",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:12:07.899Z",
+          "log": {
+            "offset": 3982,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "agent": {
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime"
+            }
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:12:07.899146+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"2181e2c5-c142-45c7-9aad-4cd802c1e49b\", \"event_type\": \"payment.authorized\", \"attempt\": 4, \"error\": \"HTTP 500\", \"final_failure\": false}\n",
+          "stream": "stderr",
+          "input": {
+            "type": "filestream"
+          },
+          "fintech": {
+            "payment_id": "2181e2c5-c142-45c7-9aad-4cd802c1e49b",
+            "event_type": "payment.authorized",
+            "attempt": 4,
+            "error": "HTTP 500",
+            "final_failure": false,
+            "timestamp": "2026-10-06T06:12:07.899146+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed"
+          }
+        },
+        "sort": [
+          1791267127899
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "7iPXD6EBmRzoW9YWe166",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:12:17.917Z",
+          "stream": "stderr",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "agent": {
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_service": "webhook-worker"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            }
+          },
+          "fintech": {
+            "event_type": "payment.authorized",
+            "attempt": 5,
+            "error": "HTTP 500",
+            "final_failure": true,
+            "timestamp": "2026-10-06T06:12:17.917653+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "b0b3aba4-f88c-4e2d-83d1-d703e86d73f9"
+          },
+          "message": "{\"timestamp\": \"2026-10-06T06:12:17.917653+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"b0b3aba4-f88c-4e2d-83d1-d703e86d73f9\", \"event_type\": \"payment.authorized\", \"attempt\": 5, \"error\": \"HTTP 500\", \"final_failure\": true}\n",
+          "log": {
+            "offset": 4344,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "input": {
+            "type": "filestream"
+          },
+          "host": {
+            "name": "df9920327f68"
+          }
+        },
+        "sort": [
+          1791267137917
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "7yPXD6EBmRzoW9YWe166",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:12:17.934Z",
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "name": "fintech-webhook-worker",
+            "labels": {
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_project": "fintech-ops-runtime"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            }
+          },
+          "fintech": {
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "dd82ca56-b270-4164-8fdf-2e2b554e0677",
+            "event_type": "payment.authorized",
+            "attempt": 5,
+            "error": "HTTP 500",
+            "final_failure": true,
+            "timestamp": "2026-10-06T06:12:17.933849+00:00"
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:12:17.933849+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"dd82ca56-b270-4164-8fdf-2e2b554e0677\", \"event_type\": \"payment.authorized\", \"attempt\": 5, \"error\": \"HTTP 500\", \"final_failure\": true}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "host": {
+            "name": "df9920327f68"
+          },
+          "agent": {
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68"
+          },
+          "log": {
+            "offset": 4704,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          }
+        },
+        "sort": [
+          1791267137934
+        ]
+      },
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "8CPXD6EBmRzoW9YWe166",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:12:17.950Z",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "fintech": {
+            "error": "HTTP 500",
+            "final_failure": true,
+            "timestamp": "2026-10-06T06:12:17.949927+00:00",
+            "service": "webhook-worker",
+            "event": "webhook_delivery_failed",
+            "payment_id": "2181e2c5-c142-45c7-9aad-4cd802c1e49b",
+            "event_type": "payment.authorized",
+            "attempt": 5
+          },
+          "log": {
+            "offset": 5065,
+            "file": {
+              "path": "/var/lib/docker/containers/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d/f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d-json.log",
+              "device_id": "64513",
+              "inode": "1111079"
+            }
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:12:17.949927+00:00\", \"service\": \"webhook-worker\", \"event\": \"webhook_delivery_failed\", \"payment_id\": \"2181e2c5-c142-45c7-9aad-4cd802c1e49b\", \"event_type\": \"payment.authorized\", \"attempt\": 5, \"error\": \"HTTP 500\", \"final_failure\": true}\n",
+          "input": {
+            "type": "filestream"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "agent": {
+            "ephemeral_id": "4323c916-8c30-43d9-bb6c-cfe01119c027",
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3"
+          },
+          "container": {
+            "id": "f572d0084d71e9fd2d4f08da7c28647c2c3c5d96080dd1e34c66bf9e7e329e7d",
+            "labels": {
+              "com_docker_compose_image": "sha256:e7af346cfb8265ee22e67988956aabcb04509f82e56d53eff48d4741843e6508",
+              "com_docker_compose_oneoff": "False",
+              "com_docker_compose_depends_on": "merchant-webhook:service_started:false,postgres:service_healthy:false,redis:service_healthy:false",
+              "com_docker_compose_service": "webhook-worker",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_replace": "fintech-webhook-worker",
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_config-hash": "6f5eae3030ebb35f1aae591b42c06c6b2f13a1c75777e659fea97546cd4ff259",
+              "com_docker_compose_container-number": "1"
+            },
+            "image": {
+              "name": "fintech-ops-runtime-webhook-worker"
+            },
+            "name": "fintech-webhook-worker"
+          }
+        },
+        "sort": [
+          1791267137950
+        ]
+      }
+    ]
+  }
+}

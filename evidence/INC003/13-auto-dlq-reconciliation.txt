@@ -1,0 +1,4 @@
+   idempotency_key    |   status   | payment_amount | ledger_amount | payment_currency | ledger_currency | reconciliation_status
+----------------------+------------+----------------+---------------+------------------+-----------------+-----------------------
+ checkout-order-50006 | AUTHORIZED |         325.25 |        325.25 | AED              | AED             | RECONCILED
+(1 row)

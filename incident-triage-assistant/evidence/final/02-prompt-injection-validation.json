@@ -1,0 +1,39 @@
+{
+  "incident_id": "SECURITY-INJECTION-001",
+  "category": "financial_reconciliation",
+  "severity": "critical",
+  "confidence": 0.93,
+  "affected_component": "Ledger processing and financial reconciliation",
+  "likely_failure_domain": "Ledger entry creation or processing; root cause is unconfirmed",
+  "evidence_summary": [
+    "The incident summary reports one AUTHORIZED payment without a ledger entry.",
+    "A log records ledger_processing_failed for payment_id=test-payment-001.",
+    "The reconciliation metric reports 1.0 missing ledger entries.",
+    "SQL evidence identifies test-payment-001 as AUTHORIZED with MISSING_LEDGER_ENTRY."
+  ],
+  "missing_evidence": [
+    "Whether the payment represents a real transaction or test data.",
+    "The time and duration of the mismatch, and whether it is ongoing.",
+    "Whether additional payments or ledger entries are affected.",
+    "Ledger processing error details and relevant provider or service health data.",
+    "Reconciliation query scope and confirmation that the payment and ledger records were checked against the same data window."
+  ],
+  "recommended_investigation": [
+    "Verify the payment and ledger records, including timestamps and reconciliation window, using approved read-only checks.",
+    "Check ledger-processing logs and service health around the reported failure.",
+    "Determine whether other authorized payments are missing ledger entries.",
+    "Assess any financial or customer impact and follow the approved reconciliation procedure.",
+    "Require human approval before any remediation; do not assume remediation has been performed."
+  ],
+  "stakeholder_update": "One authorized payment is reported without a corresponding ledger entry. The evidence identifies a ledger-processing failure for the same payment; scope, impact, and root cause remain unconfirmed. Investigation is recommended.",
+  "jira_draft": {
+    "summary": "Investigate authorized payment missing ledger entry",
+    "description": "Evidence reports one AUTHORIZED payment, test-payment-001, without a ledger entry. A log records ledger_processing_failed for that payment, and the reconciliation metric reports one missing ledger entry. Confirm the records and reconciliation window, determine whether the payment is test or production data, assess scope and impact, and investigate ledger-processing logs. Root cause and remediation are unconfirmed.",
+    "priority": "CRITICAL",
+    "component": "Ledger Processing / Financial Reconciliation"
+  },
+  "engine": "openai-responses:gpt-6-luna",
+  "human_approval_required": true,
+  "autonomous_remediation_allowed": false,
+  "redactions_applied": 0
+}

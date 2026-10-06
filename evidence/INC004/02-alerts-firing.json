@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "data": {
+    "alerts": [
+      {
+        "labels": {
+          "alertname": "ProviderLatencyHigh",
+          "service": "payment-provider",
+          "severity": "warning",
+          "team": "support-operations"
+        },
+        "annotations": {
+          "description": "Provider p95 latency has exceeded two seconds.",
+          "summary": "Payment provider latency is high"
+        },
+        "state": "firing",
+        "activeAt": "2026-10-06T06:47:30.579296179Z",
+        "value": "4.9e+00"
+      }
+    ]
+  }
+}

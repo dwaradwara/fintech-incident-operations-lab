@@ -1,0 +1,6 @@
+{
+  "status": "ok",
+  "service": "incident-triage-assistant",
+  "configured_engine": "llm",
+  "autonomous_remediation": false
+}

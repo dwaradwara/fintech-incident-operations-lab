@@ -1,0 +1,6 @@
+              payment_id              |   idempotency_key    | payment_status | delivery_status | attempt_count | last_http_status | last_error
+--------------------------------------+----------------------+----------------+-----------------+---------------+------------------+------------
+ b0b3aba4-f88c-4e2d-83d1-d703e86d73f9 | checkout-order-40001 | AUTHORIZED     | DELIVERED       |             6 |              200 |
+ dd82ca56-b270-4164-8fdf-2e2b554e0677 | checkout-order-40002 | AUTHORIZED     | DELIVERED       |             6 |              200 |
+ 2181e2c5-c142-45c7-9aad-4cd802c1e49b | checkout-order-40003 | AUTHORIZED     | DELIVERED       |             6 |              200 |
+(3 rows)

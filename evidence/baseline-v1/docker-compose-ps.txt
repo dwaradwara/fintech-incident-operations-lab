@@ -1,0 +1,7 @@
+NAME                       IMAGE                                    COMMAND                  SERVICE              CREATED          STATUS                    PORTS
+fintech-merchant-webhook   fintech-ops-runtime-merchant-webhook     "uvicorn app:app --h…"   merchant-webhook     7 minutes ago    Up 7 minutes              127.0.0.1:9100->9100/tcp
+fintech-payment-api        fintech-ops-runtime-payment-api          "uvicorn app:app --h…"   payment-api          7 minutes ago    Up 7 minutes              127.0.0.1:8080->8080/tcp
+fintech-postgres           postgres:16                              "docker-entrypoint.s…"   postgres             16 minutes ago   Up 16 minutes (healthy)   5432/tcp
+fintech-provider           fintech-ops-runtime-provider-simulator   "uvicorn app:app --h…"   provider-simulator   7 minutes ago    Up 7 minutes              127.0.0.1:9000->9000/tcp
+fintech-redis              redis:7.4-alpine                         "docker-entrypoint.s…"   redis                16 minutes ago   Up 16 minutes (healthy)   6379/tcp
+fintech-webhook-worker     fintech-ops-runtime-webhook-worker       "python -u worker.py"    webhook-worker       7 minutes ago    Up 7 minutes

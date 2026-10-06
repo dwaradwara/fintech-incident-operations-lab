@@ -1,0 +1,4 @@
+fintech_webhook_delivered_total 0.0
+fintech_webhook_delivery_failures_total 15.0
+fintech_webhook_retries_total 12.0
+fintech_webhook_permanent_failures_total 3.0

@@ -1,0 +1,5 @@
+fintech_ledger_entries_posted_total 6.0
+fintech_ledger_processing_failures_total 94.0
+fintech_ledger_queue_depth 0.0
+fintech_ledger_dlq_depth 1.0
+fintech_reconciliation_missing_ledger_entries 0.0

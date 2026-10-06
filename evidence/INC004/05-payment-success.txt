@@ -1,0 +1,4 @@
+   status   | payment_count
+------------+---------------
+ AUTHORIZED |            15
+(1 row)

@@ -1,0 +1,86 @@
+{
+  "took": 3,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": [
+      {
+        "_index": ".ds-fintech-logs-2026.10.06-2026.10.06-000001",
+        "_id": "ASPyD6EBmRzoW9YWsWIe",
+        "_score": null,
+        "_source": {
+          "@timestamp": "2026-10-06T06:41:57.591Z",
+          "log": {
+            "offset": 1481,
+            "file": {
+              "inode": "1313432",
+              "path": "/var/lib/docker/containers/c257221758d006dbeb0cf282ed97fc62063e732f65439f71c50ad2c454488f13/c257221758d006dbeb0cf282ed97fc62063e732f65439f71c50ad2c454488f13-json.log",
+              "device_id": "64513"
+            }
+          },
+          "input": {
+            "type": "filestream"
+          },
+          "agent": {
+            "id": "dfcf4fee-61ae-4882-b8a5-5d944d94a4fa",
+            "name": "df9920327f68",
+            "type": "filebeat",
+            "version": "8.15.3",
+            "ephemeral_id": "28f3c5a2-d75a-428f-b2b0-8ddeb4ad2a95"
+          },
+          "ecs": {
+            "version": "8.0.0"
+          },
+          "container": {
+            "labels": {
+              "com_docker_compose_project_config_files": "/home/devops/fintech-ops-runtime/docker-compose.yml,/home/devops/fintech-ops-runtime/docker-compose.override.yml",
+              "com_docker_compose_depends_on": "redis:service_healthy:false,postgres:service_healthy:false",
+              "com_docker_compose_image_builder": "classic",
+              "com_docker_compose_image": "sha256:b2b9c2bd0b028990f26ce513db1a104f04d43eb835b5aeab40e18fd7d1990c6e",
+              "com_docker_compose_project": "fintech-ops-runtime",
+              "com_docker_compose_service": "ledger-worker",
+              "com_docker_compose_replace": "fintech-ledger-worker",
+              "com_docker_compose_config-hash": "2e4ecef535626d1f0c98420f87adcbcbd6d618a08a4e30c72f27070f5c259562",
+              "com_docker_compose_container-number": "1",
+              "com_docker_compose_version": "5.6.0",
+              "com_docker_compose_project_working_dir": "/home/devops/fintech-ops-runtime",
+              "com_docker_compose_oneoff": "False"
+            },
+            "id": "c257221758d006dbeb0cf282ed97fc62063e732f65439f71c50ad2c454488f13",
+            "image": {
+              "name": "fintech-ops-runtime-ledger-worker"
+            },
+            "name": "fintech-ledger-worker"
+          },
+          "stream": "stderr",
+          "message": "{\"timestamp\": \"2026-10-06T06:41:57.590469+00:00\", \"service\": \"ledger-worker\", \"event\": \"ledger_event_quarantined\", \"raw_job\": \"{\\\"payment_id\\\":\\\"poison-event-002\\\",\\\"amount\\\":\\\"BROKEN_AMOUNT\\\",\\\"currency\\\":\\\"AED\\\"}\", \"reason\": \"Invalid ledger amount\", \"attempts\": 3, \"dlq_depth\": 2}\n",
+          "host": {
+            "name": "df9920327f68"
+          },
+          "fintech": {
+            "service": "ledger-worker",
+            "event": "ledger_event_quarantined",
+            "raw_job": "{\"payment_id\":\"poison-event-002\",\"amount\":\"BROKEN_AMOUNT\",\"currency\":\"AED\"}",
+            "reason": "Invalid ledger amount",
+            "attempts": 3,
+            "dlq_depth": 2,
+            "timestamp": "2026-10-06T06:41:57.590469+00:00"
+          }
+        },
+        "sort": [
+          1791268917591
+        ]
+      }
+    ]
+  }
+}

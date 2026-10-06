@@ -1,0 +1,51 @@
+{
+  "labels": {
+    "alertname": "ReconciliationMismatchDetected",
+    "instance": "ledger-worker:9102",
+    "job": "fintech-ledger-worker",
+    "service": "ledger-worker",
+    "severity": "critical",
+    "team": "support-operations"
+  },
+  "annotations": {
+    "description": "Three or more authorized payments are missing corresponding ledger entries.",
+    "summary": "Payment and ledger records are out of reconciliation"
+  },
+  "state": "firing",
+  "activeAt": "2026-10-06T06:33:07.359509742Z",
+  "value": "5e+00"
+}
+{
+  "labels": {
+    "alertname": "LedgerQueueBacklog",
+    "instance": "ledger-worker:9102",
+    "job": "fintech-ledger-worker",
+    "service": "ledger-worker",
+    "severity": "warning",
+    "team": "support-operations"
+  },
+  "annotations": {
+    "description": "Ledger queue depth has exceeded the normal operating threshold.",
+    "summary": "Ledger processing queue is backing up"
+  },
+  "state": "firing",
+  "activeAt": "2026-10-06T06:33:07.359509742Z",
+  "value": "6e+00"
+}
+{
+  "labels": {
+    "alertname": "LedgerProcessingFailures",
+    "instance": "ledger-worker:9102",
+    "job": "fintech-ledger-worker",
+    "service": "ledger-worker",
+    "severity": "critical",
+    "team": "support-operations"
+  },
+  "annotations": {
+    "description": "The ledger consumer is repeatedly failing to process events.",
+    "summary": "Repeated ledger event processing failures"
+  },
+  "state": "firing",
+  "activeAt": "2026-10-06T06:32:52.359509742Z",
+  "value": "5.947826086956522e+01"
+}

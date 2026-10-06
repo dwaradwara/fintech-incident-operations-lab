@@ -1,0 +1,13 @@
+=== PAYMENT API READINESS ===
+{
+  "status": "ready",
+  "database": "ok",
+  "redis": "ok"
+}
+
+=== PROVIDER HEALTH ===
+{
+  "status": "ok",
+  "failure_rate": 0.7,
+  "latency_ms": 150
+}

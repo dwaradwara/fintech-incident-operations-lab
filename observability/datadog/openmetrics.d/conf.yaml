@@ -1,0 +1,42 @@
+init_config:
+
+instances:
+
+  - openmetrics_endpoint: http://payment-api:8080/metrics
+    namespace: fintech
+    metrics:
+      - fintech_payments_created: payments.created
+      - fintech_payment_authorizations: payments.authorized
+      - fintech_payment_authorization_failures: payments.authorization_failures
+      - fintech_provider_http_errors: provider.http_errors
+      - fintech_provider_timeouts: provider.timeouts
+      - fintech_provider_request_duration_seconds: provider.request_duration_seconds
+      - fintech_webhook_queue_depth: payment.webhook_queue_depth
+    tags:
+      - service:payment-api
+      - component:payments
+
+  - openmetrics_endpoint: http://webhook-worker:9101/metrics
+    namespace: fintech
+    metrics:
+      - fintech_webhook_delivered: webhook.delivered
+      - fintech_webhook_delivery_failures: webhook.delivery_failures
+      - fintech_webhook_retries: webhook.retries
+      - fintech_webhook_permanent_failures: webhook.permanent_failures
+      - fintech_worker_webhook_queue_depth: webhook.queue_depth
+    tags:
+      - service:webhook-worker
+      - component:webhooks
+
+  - openmetrics_endpoint: http://ledger-worker:9102/metrics
+    namespace: fintech
+    metrics:
+      - fintech_ledger_entries_posted: ledger.entries_posted
+      - fintech_ledger_processing_failures: ledger.processing_failures
+      - fintech_ledger_events_quarantined: ledger.events_quarantined
+      - fintech_ledger_queue_depth: ledger.queue_depth
+      - fintech_ledger_dlq_depth: ledger.dlq_depth
+      - fintech_reconciliation_missing_ledger_entries: reconciliation.missing_ledger_entries
+    tags:
+      - service:ledger-worker
+      - component:ledger

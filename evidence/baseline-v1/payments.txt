@@ -1,0 +1,4 @@
+              payment_id              |    merchant_id    | amount | currency |   status   |          provider_reference
+--------------------------------------+-------------------+--------+----------+------------+--------------------------------------
+ 8f9fc8ab-4e23-4644-a065-0b6974f3f403 | merchant-demo-001 | 249.95 | AED      | AUTHORIZED | c50b8743-abe0-4acf-bb08-62ef26f4f62f
+(1 row)

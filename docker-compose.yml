@@ -1,0 +1,115 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: fintech-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: fintech-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "redis-cli",
+          "ping"
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  provider-simulator:
+    build: ./provider-simulator
+    container_name: fintech-provider
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9000:9000"
+
+  merchant-webhook:
+    build: ./merchant-webhook
+    container_name: fintech-merchant-webhook
+    restart: unless-stopped
+    environment:
+      MERCHANT_DB_PATH: /data/merchant.db
+    volumes:
+      - merchant_data:/data
+    ports:
+      - "127.0.0.1:9100:9100"
+
+  payment-api:
+    build: ./payment-api
+    container_name: fintech-payment-api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379/0
+      PROVIDER_URL: http://provider-simulator:9000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      provider-simulator:
+        condition: service_started
+    ports:
+      - "127.0.0.1:8080:8080"
+
+  webhook-worker:
+    build: ./webhook-worker
+    container_name: fintech-webhook-worker
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379/0
+      MERCHANT_WEBHOOK_URL: http://merchant-webhook:9100/webhooks/payment
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      merchant-webhook:
+        condition: service_started
+    ports:
+      - "127.0.0.1:9101:9101"
+
+
+  ledger-worker:
+    build: ./ledger-worker
+    container_name: fintech-ledger-worker
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:9102:9102"
+
+volumes:
+  postgres_data:
+  redis_data:
+  merchant_data:

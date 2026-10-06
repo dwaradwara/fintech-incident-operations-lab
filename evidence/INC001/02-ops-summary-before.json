@@ -1,0 +1,15 @@
+{
+  "payments": [
+    {
+      "status": "AUTHORIZED",
+      "payment_count": 2
+    }
+  ],
+  "webhooks": [
+    {
+      "delivery_status": "DELIVERED",
+      "delivery_count": 2
+    }
+  ],
+  "redis_webhook_queue_depth": 0
+}
