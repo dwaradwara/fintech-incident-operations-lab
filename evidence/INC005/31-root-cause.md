@@ -218,6 +218,25 @@ If no authoritative provider authorization can be established, the payment remai
 
 The system does not blindly repeat the authorization operation.
 
+## Provider-Side Idempotency Control
+
+After the incident, the provider simulator was hardened to enforce the authorization idempotency key during normal operation.
+
+When the same idempotency key is submitted again while its original authorization remains active, the provider returns the existing provider reference instead of creating another authorization.
+
+Validated behavior:
+
+- first authorization: creates provider authorization
+- repeated authorization: `idempotent_replay = true`
+- provider reference remains unchanged
+- duplicate authorization count remains zero
+
+Provider-side idempotency is enabled by default.
+
+INC005 can only reproduce the unsafe duplicate condition when this protection is explicitly disabled as a controlled failure-injection mechanism.
+
+This complements the Payment API's verify-provider-state-before-retry rule.
+
 ## Preventive Controls
 
 The incident established the following controls:

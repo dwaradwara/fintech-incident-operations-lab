@@ -46,6 +46,7 @@ instances:
     namespace: fintech
     metrics:
       - fintech_provider_authorizations: provider.authorizations
+      - fintech_provider_idempotent_replays: provider.idempotent_replays
       - fintech_provider_duplicate_authorizations: payments.duplicate_authorizations
     tags:
       - service:payment-provider

@@ -33,6 +33,7 @@ The lab was built to demonstrate the workflow expected from a Support Operations
 - Financial reconciliation and ledger investigation
 - Upstream provider latency analysis
 - Ambiguous payment-state and duplicate-authorization investigation
+- Provider-side idempotency protection with controlled failure injection
 - PostgreSQL transaction validation
 - Redis queue and DLQ troubleshooting
 - Prometheus and Grafana monitoring
@@ -304,6 +305,8 @@ Prometheus incident alerts:      cleared
 ```
 
 This incident demonstrates ambiguous financial-state handling, safe retry design, local idempotency versus external side effects, provider-state reconciliation, duplicate-authorization detection, and human-reviewed financial recovery.
+
+The healthy provider configuration also enforces the authorization idempotency key. Repeating the same provider request returns the original provider reference instead of creating another authorization. INC005 uses an explicit controlled bypass of this protection to reproduce the unsafe failure mode.
 
 The lab models authorization state only; it does not claim duplicate capture or settlement occurred.
 

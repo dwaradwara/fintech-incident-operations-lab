@@ -22,6 +22,7 @@ settings = {
     "failure_rate": 0.0,
     "latency_ms": 150,
     "post_authorization_delay_ms": 0,
+    "enforce_idempotency": True,
 }
 
 
@@ -37,6 +38,11 @@ PROVIDER_AUTHORIZATIONS = Counter(
 PROVIDER_DUPLICATE_AUTHORIZATIONS = Gauge(
     "fintech_provider_duplicate_authorizations",
     "Number of active duplicate provider authorizations",
+)
+
+PROVIDER_IDEMPOTENT_REPLAYS = Counter(
+    "fintech_provider_idempotent_replays_total",
+    "Authorization requests safely replayed using provider-side idempotency",
 )
 
 
@@ -55,6 +61,7 @@ class ProviderConfig(BaseModel):
         ge=0,
         le=15000,
     )
+    enforce_idempotency: bool = True
 
 
 def utc_now():
@@ -114,6 +121,9 @@ def configure(config: ProviderConfig):
     settings["latency_ms"] = config.latency_ms
     settings["post_authorization_delay_ms"] = (
         config.post_authorization_delay_ms
+    )
+    settings["enforce_idempotency"] = (
+        config.enforce_idempotency
     )
 
     return {
@@ -273,6 +283,43 @@ def authorize(
         settings["latency_ms"] / 1000
     )
 
+    # Provider-side idempotency protection.
+    #
+    # In normal operation, replaying the same idempotency
+    # key returns the original authorization instead of
+    # creating another external financial side effect.
+    #
+    # INC005 can still be reproduced by deliberately
+    # setting enforce_idempotency=false.
+    if (
+        settings["enforce_idempotency"]
+        and request.idempotency_key
+    ):
+        with authorization_lock:
+            existing = next(
+                (
+                    dict(item)
+                    for item in authorizations
+                    if (
+                        item["idempotency_key"]
+                        == request.idempotency_key
+                        and item["status"]
+                        == "AUTHORIZED"
+                    )
+                ),
+                None,
+            )
+
+        if existing:
+            PROVIDER_IDEMPOTENT_REPLAYS.inc()
+
+            return {
+                "approved": True,
+                "provider_reference":
+                    existing["provider_reference"],
+                "idempotent_replay": True,
+            }
+
     if (
         random.random()
         < settings["failure_rate"]
@@ -339,4 +386,5 @@ def authorize(
         "approved": True,
         "provider_reference":
             provider_reference,
+        "idempotent_replay": False,
     }

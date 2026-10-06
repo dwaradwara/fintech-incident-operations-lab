@@ -125,3 +125,13 @@ Include:
 Close only when both technical and business state are validated.
 
 A healthy API endpoint alone is insufficient evidence of financial recovery.
+
+## Provider-Side Idempotency
+
+Normal operation requires provider-side idempotency to remain enabled.
+
+A repeated authorization request using the same idempotency key should return the existing authorization rather than create another authorization.
+
+If duplicate-authorization testing is required in this controlled lab, provider-side idempotency may be deliberately disabled for the incident exercise only.
+
+It must be restored immediately after failure injection.
