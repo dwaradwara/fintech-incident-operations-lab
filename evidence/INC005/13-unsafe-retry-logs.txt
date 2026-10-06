@@ -1,0 +1,2 @@
+{"timestamp": "2026-10-06T11:20:18.241316+00:00", "service": "payment-api", "event": "unsafe_unknown_retry_injected", "payment_id": "d4999f69-8660-481c-b7f7-e89b71c1e405", "idempotency_key": "checkout-order-70001"}
+{"timestamp": "2026-10-06T11:20:23.282473+00:00", "service": "payment-api", "event": "payment_authorization_unknown", "payment_id": "d4999f69-8660-481c-b7f7-e89b71c1e405", "idempotency_key": "checkout-order-70001", "duration_ms": 5008.98, "unsafe_retry_enabled": true}

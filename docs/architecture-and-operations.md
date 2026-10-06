@@ -71,6 +71,8 @@ Prometheus collects application and business metrics including:
 - ledger queue depth
 - DLQ depth
 - reconciliation mismatches
+- ambiguous payment outcomes
+- duplicate provider authorizations
 
 Alert rules identify operational degradation and business-state failures.
 
@@ -195,6 +197,21 @@ Focus:
 - business impact without availability loss
 - recovery validation
 
+### INC005 — Ambiguous Payment Outcome / Duplicate Authorization
+
+Focus:
+
+- provider authorization succeeds while the caller times out
+- internal `UNKNOWN` payment state
+- authoritative provider-state lookup
+- controlled unsafe-retry reproduction
+- duplicate provider authorization detection
+- `REQUIRES_REVIEW` containment
+- evidence-based human reversal decision
+- preservation of the original authorization
+- payment, ledger, and webhook reconciliation
+- Datadog and Prometheus recovery validation
+
 ## Recovery Safety
 
 The lab avoids broad destructive recovery actions.
@@ -205,6 +222,9 @@ Operational recovery principles include:
 - preserve evidence before remediation
 - prefer replay over manual data fabrication
 - validate idempotency where applicable
+- treat payment-provider timeouts as ambiguous until authoritative state is known
+- block blind retries of financial operations after ambiguous outcomes
+- require evidence before choosing an authorization for reversal
 - verify both technical and business state afterward
 - require human approval for AI-generated recommendations
 

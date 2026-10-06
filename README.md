@@ -32,6 +32,7 @@ The lab was built to demonstrate the workflow expected from a Support Operations
 - Merchant webhook delivery and retry analysis
 - Financial reconciliation and ledger investigation
 - Upstream provider latency analysis
+- Ambiguous payment-state and duplicate-authorization investigation
 - PostgreSQL transaction validation
 - Redis queue and DLQ troubleshooting
 - Prometheus and Grafana monitoring
@@ -102,6 +103,7 @@ Incident evidence ─ Redaction ─ LLM triage ─ Deterministic policy
 | **INC002** | Merchant webhook delivery failure | Retry state, SQL, centralized logs, idempotency | Targeted replay and merchant-side duplicate protection |
 | **INC003** | Financial reconciliation mismatch | Ledger metrics, SQL, queue state, processing logs | Poison-event quarantine, DLQ handling, and reconciliation |
 | **INC004** | Provider latency degradation | Provider latency metrics, SQL, and logs | Provider normalized and latency alert recovered |
+| **INC005** | Ambiguous payment outcome / duplicate authorization | Provider state, idempotency, SQL, logs, Prometheus, Datadog | Duplicate reversed and original authorization reconciled |
 
 ---
 
@@ -235,6 +237,79 @@ and the latency alert returned to inactive.
 
 ---
 
+## INC005 — Ambiguous Payment Outcome / Duplicate Authorization
+
+A controlled provider scenario demonstrated a critical payment-support failure mode: the provider authorized an AED 400 payment, but its response arrived after the Payment API timeout.
+
+The same transaction therefore had two different views:
+
+```text
+Payment API: UNKNOWN
+Provider:    AUTHORIZED
+```
+
+The key operational principle is:
+
+> A timeout is not proof that a payment failed. It means the caller did not receive a response within the configured timeout.
+
+A controlled unsafe retry reproduced the failure that can occur when an ambiguous financial operation is repeated without first checking authoritative provider state.
+
+The same payment intent temporarily had:
+
+```text
+Intended payment:               AED 400
+Active provider authorizations:       2
+Total authorization exposure:   AED 800
+Duplicate authorization exposure: AED 400
+```
+
+Detection included:
+
+- `AmbiguousPaymentOutcomeDetected`
+- `DuplicatePaymentAuthorizationDetected`
+- `fintech.payments.duplicate_authorizations = 1`
+- structured Payment API logs
+- provider authorization evidence
+- PostgreSQL transaction state
+
+The corrected retry path queried provider state instead of issuing another authorization.
+
+When two active authorizations were discovered, the payment moved to:
+
+```text
+REQUIRES_REVIEW
+```
+
+with:
+
+```text
+DUPLICATE_AUTHORIZATION
+```
+
+The later authorization created by the controlled unsafe retry was reversed. The original authorization was preserved and the internal payment was reconciled against it.
+
+Final validation:
+
+```text
+Payment status:                 AUTHORIZED
+Payment amount:                 AED 400
+Active provider authorizations:       1
+Duplicate authorizations:             0
+Ledger amount:                  AED 400
+Webhook status:                 DELIVERED
+Webhook HTTP status:                  200
+Datadog duplicate metric:              0
+Prometheus incident alerts:      cleared
+```
+
+This incident demonstrates ambiguous financial-state handling, safe retry design, local idempotency versus external side effects, provider-state reconciliation, duplicate-authorization detection, and human-reviewed financial recovery.
+
+The lab models authorization state only; it does not claim duplicate capture or settlement occurred.
+
+**Evidence:** [`evidence/INC005`](evidence/INC005)
+
+---
+
 ## Datadog Observability
 
 A real Datadog Agent was integrated into the lab.
@@ -259,6 +334,8 @@ fintech.payments.authorized.count
 fintech.payments.authorization_failures.count
 fintech.provider.http_errors.count
 fintech.provider.request_duration_seconds.*
+fintech.payments.ambiguous_outcomes.count
+fintech.payments.duplicate_authorizations
 fintech.webhook.delivered.count
 fintech.webhook.delivery_failures.count
 fintech.webhook.permanent_failures.count
@@ -507,7 +584,8 @@ A green `/health` endpoint is never treated as proof that the full financial wor
 │   ├── INC001/
 │   ├── INC002/
 │   ├── INC003/
-│   └── INC004/
+│   ├── INC004/
+│   └── INC005/
 ├── incident-triage-assistant/
 ├── ledger-worker/
 ├── merchant-webhook/
@@ -538,6 +616,7 @@ Incident evidence:
 - [`INC002 Evidence`](evidence/INC002)
 - [`INC003 Evidence`](evidence/INC003)
 - [`INC004 Evidence`](evidence/INC004)
+- [`INC005 Evidence`](evidence/INC005)
 
 ---
 

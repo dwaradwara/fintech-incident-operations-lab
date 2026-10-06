@@ -1,0 +1,4 @@
+              payment_id              |   idempotency_key    | payment_amount | payment_currency | payment_status |          provider_reference          | ledger_amount | ledger_currency
+--------------------------------------+----------------------+----------------+------------------+----------------+--------------------------------------+---------------+-----------------
+ d4999f69-8660-481c-b7f7-e89b71c1e405 | checkout-order-70001 |         400.00 | AED              | AUTHORIZED     | 80937d56-4a8a-4a09-9558-46449d0e47b1 |        400.00 | AED
+(1 row)

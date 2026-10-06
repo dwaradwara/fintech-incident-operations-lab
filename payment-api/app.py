@@ -29,6 +29,14 @@ DATABASE_URL = os.environ["DATABASE_URL"]
 REDIS_URL = os.environ["REDIS_URL"]
 PROVIDER_URL = os.environ["PROVIDER_URL"]
 
+ALLOW_UNSAFE_UNKNOWN_RETRY = (
+    os.environ.get(
+        "ALLOW_UNSAFE_UNKNOWN_RETRY",
+        "false",
+    ).lower()
+    == "true"
+)
+
 app = FastAPI(title="Fintech Payment Operations API")
 
 redis_client = redis.from_url(
@@ -66,6 +74,11 @@ PROVIDER_ERRORS = Counter(
 PROVIDER_TIMEOUTS = Counter(
     "fintech_provider_timeouts_total",
     "Upstream provider timeouts"
+)
+
+AMBIGUOUS_PAYMENT_OUTCOMES = Counter(
+    "fintech_payment_ambiguous_outcomes_total",
+    "Payment requests whose provider outcome is unknown"
 )
 
 PROVIDER_LATENCY = Histogram(
@@ -136,6 +149,257 @@ def enqueue_webhook(payment_id, event_type):
     )
 
 
+
+def reconcile_unknown_payment(existing):
+    payment_id = str(
+        existing["payment_id"]
+    )
+
+    log_event(
+        "provider_state_lookup_started",
+        payment_id=payment_id,
+        idempotency_key=
+            existing["idempotency_key"],
+        current_status=existing["status"],
+    )
+
+    try:
+        response = requests.get(
+            f"{PROVIDER_URL}/authorizations/{payment_id}",
+            timeout=2,
+        )
+
+        response.raise_for_status()
+        provider_state = response.json()
+
+    except requests.RequestException as exc:
+        log_event(
+            "provider_state_lookup_failed",
+            payment_id=payment_id,
+            error=str(exc),
+        )
+
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Provider state could not be verified. "
+                "Authorization retry is blocked."
+            ),
+        )
+
+    active = [
+        item
+        for item in provider_state.get(
+            "authorizations",
+            [],
+        )
+        if item.get("status") == "AUTHORIZED"
+    ]
+
+    active_count = len(active)
+
+    log_event(
+        "provider_state_lookup_completed",
+        payment_id=payment_id,
+        active_authorizations=active_count,
+        total_provider_records=
+            provider_state.get(
+                "total_count",
+                0,
+            ),
+    )
+
+    if active_count == 1:
+        provider_reference = (
+            active[0]["provider_reference"]
+        )
+
+        with psycopg.connect(
+            DATABASE_URL
+        ) as conn:
+
+            conn.execute(
+                """
+                UPDATE payments
+                SET
+                    status = 'AUTHORIZED',
+                    provider_reference = %s,
+                    failure_code = NULL,
+                    failure_message = NULL,
+                    updated_at = now()
+                WHERE payment_id = %s
+                """,
+                (
+                    provider_reference,
+                    existing["payment_id"],
+                ),
+            )
+
+            conn.execute(
+                """
+                INSERT INTO payment_events (
+                    payment_id,
+                    event_type,
+                    event_payload
+                )
+                VALUES (%s, %s, %s)
+                """,
+                (
+                    existing["payment_id"],
+                    "payment.reconciled_from_provider_state",
+                    Jsonb({
+                        "provider_reference":
+                            provider_reference,
+                        "previous_status":
+                            existing["status"],
+                    }),
+                ),
+            )
+
+            conn.execute(
+                """
+                INSERT INTO webhook_deliveries (
+                    payment_id,
+                    event_type,
+                    delivery_status
+                )
+                VALUES (
+                    %s,
+                    'payment.authorized',
+                    'PENDING'
+                )
+                """,
+                (existing["payment_id"],),
+            )
+
+            conn.commit()
+
+        enqueue_webhook(
+            existing["payment_id"],
+            "payment.authorized",
+        )
+
+        redis_client.rpush(
+            "ledger_jobs",
+            json.dumps({
+                "payment_id":
+                    payment_id,
+                "amount":
+                    str(existing["amount"]),
+                "currency":
+                    existing["currency"],
+            }),
+        )
+
+        log_event(
+            "payment_reconciled_authorized",
+            payment_id=payment_id,
+            provider_reference=
+                provider_reference,
+        )
+
+        return get_by_idempotency_key(
+            existing["idempotency_key"]
+        )
+
+    if active_count > 1:
+        references = [
+            item["provider_reference"]
+            for item in active
+        ]
+
+        with psycopg.connect(
+            DATABASE_URL
+        ) as conn:
+
+            conn.execute(
+                """
+                UPDATE payments
+                SET
+                    status = 'REQUIRES_REVIEW',
+                    failure_code =
+                        'DUPLICATE_AUTHORIZATION',
+                    failure_message =
+                        'Multiple active provider authorizations detected',
+                    updated_at = now()
+                WHERE payment_id = %s
+                """,
+                (existing["payment_id"],),
+            )
+
+            conn.execute(
+                """
+                INSERT INTO payment_events (
+                    payment_id,
+                    event_type,
+                    event_payload
+                )
+                VALUES (%s, %s, %s)
+                """,
+                (
+                    existing["payment_id"],
+                    "payment.duplicate_authorization_detected",
+                    Jsonb({
+                        "active_authorizations":
+                            active_count,
+                        "provider_references":
+                            references,
+                    }),
+                ),
+            )
+
+            conn.commit()
+
+        log_event(
+            "duplicate_authorization_detected",
+            payment_id=payment_id,
+            active_authorizations=
+                active_count,
+            provider_references=
+                references,
+        )
+
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "error":
+                    "DUPLICATE_AUTHORIZATION",
+                "message":
+                    (
+                        "Multiple active provider "
+                        "authorizations detected. "
+                        "Human review required."
+                    ),
+                "payment_id":
+                    payment_id,
+                "active_authorizations":
+                    active_count,
+            },
+        )
+
+    log_event(
+        "provider_state_unresolved",
+        payment_id=payment_id,
+    )
+
+    raise HTTPException(
+        status_code=409,
+        detail={
+            "error":
+                "PAYMENT_OUTCOME_UNKNOWN",
+            "message":
+                (
+                    "No authoritative provider "
+                    "authorization was found. "
+                    "Do not retry authorization "
+                    "automatically."
+                ),
+            "payment_id":
+                payment_id,
+        },
+    )
+
+
 @app.get("/health")
 def health():
     return {
@@ -186,64 +450,104 @@ def create_payment(
         x_idempotency_key
     )
 
+    unsafe_retry_existing = False
+
     if existing:
+        if (
+            existing["status"]
+            in {
+                "UNKNOWN",
+                "REQUIRES_REVIEW",
+            }
+            and not ALLOW_UNSAFE_UNKNOWN_RETRY
+        ):
+            return reconcile_unknown_payment(
+                existing
+            )
+
+        if (
+            existing["status"] == "UNKNOWN"
+            and ALLOW_UNSAFE_UNKNOWN_RETRY
+        ):
+            payment_id = existing[
+                "payment_id"
+            ]
+
+            unsafe_retry_existing = True
+
+            log_event(
+                "unsafe_unknown_retry_injected",
+                payment_id=str(payment_id),
+                idempotency_key=
+                    x_idempotency_key,
+            )
+
+        else:
+            log_event(
+                "idempotent_replay",
+                payment_id=str(
+                    existing["payment_id"]
+                ),
+                idempotency_key=
+                    x_idempotency_key,
+                status=existing["status"]
+            )
+
+            return existing
+
+    if not unsafe_retry_existing:
+        payment_id = uuid.uuid4()
+
+        with psycopg.connect(
+            DATABASE_URL
+        ) as conn:
+
+            result = conn.execute(
+                """
+                INSERT INTO payments (
+                    payment_id,
+                    idempotency_key,
+                    merchant_id,
+                    customer_id,
+                    amount,
+                    currency,
+                    status,
+                    ledger_required
+                )
+                VALUES (
+                    %s, %s, %s, %s,
+                    %s, %s, 'PENDING', TRUE
+                )
+                ON CONFLICT (idempotency_key)
+                DO NOTHING
+                RETURNING payment_id
+                """,
+                (
+                    payment_id,
+                    x_idempotency_key,
+                    request.merchant_id,
+                    request.customer_id,
+                    request.amount,
+                    request.currency.upper()
+                )
+            ).fetchone()
+
+            conn.commit()
+
+        if result is None:
+            return get_by_idempotency_key(
+                x_idempotency_key
+            )
+
+        PAYMENTS_CREATED.inc()
+
         log_event(
-            "idempotent_replay",
-            payment_id=str(existing["payment_id"]),
-            idempotency_key=x_idempotency_key,
-            status=existing["status"]
+            "payment_created",
+            payment_id=str(payment_id),
+            merchant_id=request.merchant_id,
+            amount=str(request.amount),
+            currency=request.currency.upper()
         )
-
-        return existing
-
-    payment_id = uuid.uuid4()
-
-    with psycopg.connect(DATABASE_URL) as conn:
-        result = conn.execute(
-            """
-            INSERT INTO payments (
-                payment_id,
-                idempotency_key,
-                merchant_id,
-                customer_id,
-                amount,
-                currency,
-                status,
-                ledger_required
-            )
-            VALUES (
-                %s, %s, %s, %s, %s, %s, 'PENDING', TRUE
-            )
-            ON CONFLICT (idempotency_key)
-            DO NOTHING
-            RETURNING payment_id
-            """,
-            (
-                payment_id,
-                x_idempotency_key,
-                request.merchant_id,
-                request.customer_id,
-                request.amount,
-                request.currency.upper()
-            )
-        ).fetchone()
-
-        conn.commit()
-
-    if result is None:
-        return get_by_idempotency_key(
-            x_idempotency_key
-        )
-
-    PAYMENTS_CREATED.inc()
-
-    log_event(
-        "payment_created",
-        payment_id=str(payment_id),
-        merchant_id=request.merchant_id,
-        amount=str(request.amount),
-        currency=request.currency.upper()
-    )
 
     started = time.monotonic()
 
@@ -253,7 +557,8 @@ def create_payment(
             json={
                 "payment_id": str(payment_id),
                 "amount": float(request.amount),
-                "currency": request.currency.upper()
+                "currency": request.currency.upper(),
+                "idempotency_key": x_idempotency_key
             },
             timeout=5
         )
@@ -264,21 +569,26 @@ def create_payment(
             2
         )
 
-        PAYMENT_AUTH_FAILURES.inc()
         PROVIDER_TIMEOUTS.inc()
+        AMBIGUOUS_PAYMENT_OUTCOMES.inc()
+
         PROVIDER_LATENCY.observe(
             duration_ms / 1000
         )
 
-        with psycopg.connect(DATABASE_URL) as conn:
+        with psycopg.connect(
+            DATABASE_URL
+        ) as conn:
+
             conn.execute(
                 """
                 UPDATE payments
                 SET
-                    status = 'PROVIDER_TIMEOUT',
-                    failure_code = 'PROVIDER_TIMEOUT',
+                    status = 'UNKNOWN',
+                    failure_code =
+                        'PROVIDER_TIMEOUT_AMBIGUOUS',
                     failure_message =
-                        'Provider request exceeded timeout',
+                        'Provider response timed out; authorization outcome is unknown',
                     updated_at = now()
                 WHERE payment_id = %s
                 """,
@@ -296,9 +606,12 @@ def create_payment(
                 """,
                 (
                     payment_id,
-                    "payment.provider_timeout",
+                    "payment.authorization_unknown",
                     Jsonb({
-                        "duration_ms": duration_ms
+                        "duration_ms":
+                            duration_ms,
+                        "unsafe_retry_enabled":
+                            ALLOW_UNSAFE_UNKNOWN_RETRY,
                     })
                 )
             )
@@ -306,14 +619,31 @@ def create_payment(
             conn.commit()
 
         log_event(
-            "provider_timeout",
+            "payment_authorization_unknown",
             payment_id=str(payment_id),
-            duration_ms=duration_ms
+            idempotency_key=
+                x_idempotency_key,
+            duration_ms=duration_ms,
+            unsafe_retry_enabled=
+                ALLOW_UNSAFE_UNKNOWN_RETRY,
         )
 
         raise HTTPException(
             status_code=504,
-            detail="Payment provider timed out"
+            detail={
+                "error":
+                    "PAYMENT_OUTCOME_UNKNOWN",
+                "message":
+                    (
+                        "Provider response timed out. "
+                        "Authorization outcome is "
+                        "unknown and must be verified "
+                        "before another authorization "
+                        "attempt."
+                    ),
+                "payment_id":
+                    str(payment_id),
+            },
         )
 
     duration_ms = round(

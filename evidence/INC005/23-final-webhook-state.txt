@@ -1,0 +1,4 @@
+   idempotency_key    |     event_type     | delivery_status | attempt_count | last_http_status
+----------------------+--------------------+-----------------+---------------+------------------
+ checkout-order-70001 | payment.authorized | DELIVERED       |             1 |              200
+(1 row)

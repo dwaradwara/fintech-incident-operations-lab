@@ -1,0 +1,10 @@
+{
+  "name": "AmbiguousPaymentOutcomeDetected",
+  "state": "inactive",
+  "health": "ok"
+}
+{
+  "name": "DuplicatePaymentAuthorizationDetected",
+  "state": "inactive",
+  "health": "ok"
+}

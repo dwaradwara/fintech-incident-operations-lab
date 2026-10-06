@@ -65,6 +65,7 @@ services:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       REDIS_URL: redis://redis:6379/0
       PROVIDER_URL: http://provider-simulator:9000
+      ALLOW_UNSAFE_UNKNOWN_RETRY: ${ALLOW_UNSAFE_UNKNOWN_RETRY:-false}
     depends_on:
       postgres:
         condition: service_healthy

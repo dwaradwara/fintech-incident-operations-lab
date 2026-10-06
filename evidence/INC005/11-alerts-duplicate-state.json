@@ -1,0 +1,20 @@
+[
+  {
+    "alertname": "AmbiguousPaymentOutcomeDetected",
+    "state": "firing",
+    "value": "1.0434782608695652e+00",
+    "activeAt": "2026-10-06T11:20:25.579296179Z",
+    "severity": "critical",
+    "service": "payment-api",
+    "summary": "Payment authorization outcome is unknown"
+  },
+  {
+    "alertname": "DuplicatePaymentAuthorizationDetected",
+    "state": "firing",
+    "value": "1e+00",
+    "activeAt": "2026-10-06T11:20:25.579296179Z",
+    "severity": "critical",
+    "service": "payment-provider",
+    "summary": "Duplicate payment authorization detected"
+  }
+]

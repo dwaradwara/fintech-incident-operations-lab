@@ -1,0 +1,2 @@
+{"detail":{"error":"PAYMENT_OUTCOME_UNKNOWN","message":"Provider response timed out. Authorization outcome is unknown and must be verified before another authorization attempt.","payment_id":"d4999f69-8660-481c-b7f7-e89b71c1e405"}}
+HTTP_STATUS=504

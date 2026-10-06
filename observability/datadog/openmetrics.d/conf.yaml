@@ -10,6 +10,7 @@ instances:
       - fintech_payment_authorization_failures: payments.authorization_failures
       - fintech_provider_http_errors: provider.http_errors
       - fintech_provider_timeouts: provider.timeouts
+      - fintech_payment_ambiguous_outcomes: payments.ambiguous_outcomes
       - fintech_provider_request_duration_seconds: provider.request_duration_seconds
       - fintech_webhook_queue_depth: payment.webhook_queue_depth
     tags:
@@ -40,3 +41,12 @@ instances:
     tags:
       - service:ledger-worker
       - component:ledger
+
+  - openmetrics_endpoint: http://provider-simulator:9000/metrics
+    namespace: fintech
+    metrics:
+      - fintech_provider_authorizations: provider.authorizations
+      - fintech_provider_duplicate_authorizations: payments.duplicate_authorizations
+    tags:
+      - service:payment-provider
+      - component:payments
